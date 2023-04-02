@@ -1,0 +1,102 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin: 0 0 20px;
+  }
+
+  #qr-code{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #authentication-section,
+  #connection-section,
+  #messaging-section {
+    margin: 20px auto;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  #authentication-section input[type="text"],
+  #connection-section input[type="text"],
+  #message-box input[type="text"] {
+    padding: 5px;
+  }
+  
+  #authentication-section button,
+  #connection-section button,
+  #message-box button {
+    background-color: #2196F3;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  #authentication-section button:hover,
+  #connection-section button:hover,
+  #message-box button:hover {
+    background-color: #0D8AF3;
+  }
+  
+  #chat-box {
+    background-color: #F3F3F3;
+    height: 300px;
+    margin: 20px auto;
+    overflow-y: scroll;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  #chat-box div {
+    margin-bottom: 5px;
+  }
+  
+  #message-box {
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  #message-box input[type="text"] {
+    width: 80%;
+  }
+  
+  #message-box button {
+    width: 18%;
+  }
+  
+#file-container {
+  margin: 20px;
+}
+
+#file-container label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#file-container input[type="file"] {
+  display: inline-block;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #2196F3;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+  
+}
