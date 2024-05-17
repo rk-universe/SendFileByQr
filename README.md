@@ -25,7 +25,6 @@ To use this service, simply navigate to the website in your browser. No installa
 
 ## Usage
 
-```sh
 1. Access the website from both the sending and receiving devices.
 2. Select the file you want to send.
 3. Scan the QR code displayed on the sending device using the receiving device's camera.
