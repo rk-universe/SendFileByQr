@@ -9,7 +9,7 @@ services:
     startCommand: "node index.js"
 
   # Service 2: The React Frontend Client
-  - type: static site
+  - type: web
     name: file-sharing-client
     env: static
     rootDir: client # The directory where your client code is
