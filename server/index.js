@@ -13,20 +13,6 @@ const io = new Server(server, {
   maxHttpBufferSize: 1e8,
 });
 
-function logActiveRooms() {
-  const rooms = io.sockets.adapter.rooms;
-  console.log("--- Active Rooms ---");
-  rooms.forEach((sockets, roomId) => {
-    // We filter out the default rooms that match a user's socket ID
-    // to only show the "group" rooms we created.
-    if (sockets.size === 1 && sockets.has(roomId)) {
-      // This is a default room for a single user, so we can ignore it.
-    } else {
-      console.log(`Room: ${roomId}, Users: ${sockets.size}`);
-    }
-  });
-  console.log("--------------------");
-}
 
 io.on('connection', (socket) => {
   console.log(`✅ User connected: ${socket.id}`);
@@ -56,14 +42,13 @@ io.on('connection', (socket) => {
 
   // Relay text messages
   socket.on('send-message', (data) => {
-    console.log(`Message from ${socket.id}:`, data);
     const { room, message } = data;
     io.to(room).emit('receive-message', {
       authorId: socket.id,
       type: 'text',
       content: message,
     });
-    console.log(`Message sent to ${room}:`, message);
+  
   });
 
   // Relay file metadata
@@ -79,7 +64,6 @@ io.on('connection', (socket) => {
   socket.on('send-file-chunk', (data) => {
     const { room, chunk } = data;
     // We forward the raw binary chunk
-    console.log(`File chunk from ${socket.id} to room ${room}`);
     io.to(room).emit('receive-file-chunk', chunk);
   });
 
