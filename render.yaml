@@ -1,0 +1,25 @@
+services:
+  # Service 1: The Node.js Backend Server
+  - type: web
+    name: file-sharing-server
+    env: node
+    rootDir: server # The directory where your server code is
+    plan: free # Specifies the free instance type
+    buildCommand: "npm install"
+    startCommand: "node index.js"
+
+  # Service 2: The React Frontend Client
+  - type: static
+    name: file-sharing-client
+    env: static
+    rootDir: client # The directory where your client code is
+    plan: free # Specifies the free instance type
+    buildCommand: "npm install && npm run build"
+    publishDir: "dist" # The folder Vite builds the static files into
+    
+    # This rule is important for single-page apps like React
+    # It ensures all paths are handled by your index.html
+    routes:
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
